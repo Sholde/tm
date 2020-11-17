@@ -318,6 +318,90 @@
   % Question 11
 \item
 
+  \underline{Solution exacte :}
+
+  \begin{equation*}
+    \left\{
+    \begin{array}{l}
+      u'(t) = - u^2 (t) \\
+      u(0) = 1
+    \end{array}
+    \right.
+  \end{equation*}
+
+  On trouve :
+
+  \begin{equation*}
+    u(t) = - \frac{1}{- t + k}
+  \end{equation*}
+
+  Et on a :
+
+  \begin{equation*}
+    u(0) = 1 = - \frac{1}{k}
+  \end{equation*}
+
+  Donc 
+
+  \begin{equation*}
+    k = - 1
+  \end{equation*}
+
+  Et donc
+
+  \begin{equation*}
+    u(t) = \frac{1}{t + 1}
+  \end{equation*}
+
+
+  \underline{Euler explicite :}
+
+  \begin{equation*}
+    \begin{split}
+      u_{m+1} & = u_m + \Delta t f(u_m) \\
+      & = u_m + \Delta t ( - u_m^2) \\
+      & = u_m - \Delta t u_m^2 \\
+      & = u_m (1 - \Delta t u_m) \\
+    \end{split}
+  \end{equation*}
+
+  Donc $u_m = u_{m-1} (1 - \Delta t u_{m-1})$
+
+  \underline{Euler implicite :}
+
+  \begin{equation*}
+    \begin{split}
+      u_{m+1} & = u_m + \Delta t f(u_{m+1}) \\
+      & = u_m + \Delta t ( - u_{m+1}^2) \\
+      & = u_m - \Delta t u_{m+1}^2 \\
+      \Delta t u_{m+1}^2 + u_{m+1} - u_m & = 0\\
+    \end{split}
+  \end{equation*}
+
+  Calculons le discriminant :
+
+  \begin{equation*}
+    \begin{split}
+      \Delta & = b^2 - 4ac \\
+      & = 1^2 - 4 \Delta t (- u_m) \\
+      & = 4 \Delta t u_m + 1\\
+    \end{split}
+  \end{equation*}
+
+  Le résustat de $u_{m+1}$ est la solution poisitive :
+
+  \begin{equation*}
+    \begin{split}
+      u_{m+1} & = \frac{- b + \sqrt{\Delta}}{2a} \\
+      & = \frac{- 1 + \sqrt{4 \Delta t u_m + 1}}{2 \Delta t} \\
+      & = \frac{\sqrt{4 \Delta t u_m + 1} - 1}{2 \Delta t} \\
+    \end{split}
+  \end{equation*}
+
+  Donc $ u_{m+1} = \frac{\sqrt{4 \Delta t u_m + 1} - 1}{2 \Delta t}$
+  et $ u_m = \frac{\sqrt{4 \Delta t u_{m-1} + 1} - 1}{2 \Delta t}$
+  
+
   % Question 12
 \item
   
