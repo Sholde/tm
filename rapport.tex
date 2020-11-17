@@ -176,6 +176,8 @@
   % Question 6
 \item
 
+  D'après la question précédentes on a :
+
   \begin{equation*}
     \begin{split}
       u(t_{m+1}) & = u(t_m) + \Delta t f(u(t_{m+1})) \\
@@ -216,6 +218,8 @@
   % Question 8
 \item
 
+  D'après la question précédentes on a :
+
   \begin{equation*}
     \begin{split}
       \frac{u(t_{m + 1}) - u(t_m)}{\Delta t} & = \frac{f(u(t_{m+1})) +
@@ -229,6 +233,8 @@
 
   % Question 9
 \item
+
+  D'après la question précédentes on a :
 
   \begin{equation*}
     \begin{split}
@@ -251,19 +257,63 @@
 
   Donc
 
-    \begin{equation*}
-      \begin{split}
-        u_{m + 1}  & = u_m \left( \frac{2 - \Delta
-          t}{2 + \Delta t} \right) \\
-        u_m  & = u_{m-1} \left( \frac{2 - \Delta
-          t}{2 + \Delta t} \right) \\
-        u_m  & = \left( \frac{2 - \Delta
-          t}{2 + \Delta t} \right)^m \\
-      \end{split}
-    \end{equation*}
+  \begin{equation*}
+    \begin{split}
+      u_{m + 1}  & = u_m \left( \frac{2 - \Delta
+        t}{2 + \Delta t} \right) \\
+      u_m  & = u_{m-1} \left( \frac{2 - \Delta
+        t}{2 + \Delta t} \right) \\
+      u_m  & = \left( \frac{2 - \Delta
+        t}{2 + \Delta t} \right)^m \\
+    \end{split}
+  \end{equation*}
 
   % Question 10
 \item
+
+  Calculons la solutionà $t = 1$:
+
+  \begin{equation*}
+    u(1) = e^{-1} \approx 0,37
+  \end{equation*}
+
+  Supposons que $\Delta t$ est petit, c'est-à-dire $\Delta t =
+  \frac{1}{n}$ \newline
+
+  \underline{Schéma d'Euler explicite :}
+
+  \begin{equation*}
+    u_n = \left( 1 - \frac{1}{n} \right)^n
+  \end{equation*}
+
+  \underline{Schéma d'Euler implicite :}
+
+  \begin{equation*}
+    u_n = \frac{1}{\left( 1 + \frac{1}{n} \right)^n}
+  \end{equation*}
+
+  \underline{Schéma numérique :}
+
+  \begin{equation*}
+    u_n = \left( \frac{2 - \frac{1}{n}}{2 + \frac{1}{n}} \right)^n
+  \end{equation*}
+
+  Ces schéma sont implémente dans \textbf{main.f90}.
+
+  \newpage
+
+  \lstinputlisting[language=fortran]{main.f90}
+
+  En exécutant ce code on obtient :
+
+  \lstinputlisting{result.txt}
+
+  Ici on a choisis $n_1 = 10$ et $n_2 = 100$. On voit que pour les
+  schémas d'Euler le delta est de l'ordre de $10^{-2}$ et que pour le
+  schéma numérique il est de l'ordre de $10^{-4}$.\newline
+  Donc on peut supposer que si les erreurs relatives des schémas
+  d'Euler sont de l'ordre de $k \Delta t$ alors l'erreur relative du
+  schéma numérique est de l'ordre de $k \Delta t^2$.
 
   % Question 11
 \item

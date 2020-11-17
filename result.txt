@@ -1,0 +1,19 @@
+ Choose n1 :
+10
+ Choose n2 :
+100
+ 
+ Avec n =    10.0000000    
+ euler explicite :   0.348678350    
+ euler implicite :   0.385543197    
+ numerique       :   0.367572576    
+ 
+ Avec n =    100.000000    
+ euler explicite :   0.366032690    
+ euler implicite :   0.369711548    
+ numerique       :   0.367877424    
+ 
+ Delta :
+ delta euler explicite :    1.58316493E-02
+ delta euler implicite :    1.73543394E-02
+ delta numerique       :    3.04847956E-04

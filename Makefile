@@ -1,12 +1,18 @@
 OUT = rapport.pdf
 
-.PHONY: all clean
+.PHONY: all half-clean clean
 
-all: $(OUT) clean
+all: $(OUT) main half-clean
 
 $(OUT): rapport.tex
 	pdflatex $< -o $@
 
-clean:
+main: main.f90
+	gfortran $< -o $@
+
+half-clean:
 	rm -Rf *~ *.log *.aux *.toc
+
+clean:
+	rm -Rf *~ *.log *.aux *.toc *.o main
 
