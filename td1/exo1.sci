@@ -1,6 +1,18 @@
 
-function [res] = test(x)
+function [res] = a_analytique(x)
 	 res = sin(2 * %pi * x);
+endfunction
+
+function [res] = a_numerique(x, t)
+	 res = exp(- 4 * (%pi ** 2) * t) * a_analytique(x);
+endfunction
+
+function [res] = b_analytique(x)
+	 res = sin(2 * %pi * x);
+endfunction
+
+function [res] = b_numerique(x, t)
+	 res = exp(- 4 * (%pi ** 2) * t) * a_analytique(x);
 endfunction
 
 function [res] = explicite(n, m1, j, dt, dx, func)
