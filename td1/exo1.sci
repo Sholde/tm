@@ -1,43 +1,64 @@
+// Exercice 1
 
-function [res] = a_analytique(x)
+// Analytique
+function [res] = a_numerique(x)
 	 res = sin(2 * %pi * x);
 endfunction
 
-function [res] = a_numerique(x, t)
+// Numerique
+function [res] = a_analytique(x, t)
 	 res = exp(- 4 * (%pi ** 2) * t) * a_analytique(x);
 endfunction
 
-function [res] = b_analytique(x)
-	 res = sin(2 * %pi * x);
-endfunction
+// Euler explicite
+function [res] = explicite(n, dt, dx, func)
+	 // Init U_0
+	 U_0 = zeros(n);
 
-function [res] = b_numerique(x, t)
-	 res = exp(- 4 * (%pi ** 2) * t) * a_analytique(x);
-endfunction
-
-function [res] = explicite(n, m1, j, dt, dx, func)
-	 // Init result
-	 res = 0;
-
-	 // Compute dx^2
-	 dx2 = dx ** 2;
-
-	 // Compute r
-	 r = dt / dx2;
-
-	 // Compute h
-	 h = 1 / n;
-
-	 if (m1 - 1 == 0)
-	    res = func(j * h);
-	    return
+	 for j = 1:n
+	     U_0(j) = func(j * dx);
 	 end
 
-	 if (j == 0 || j == n)
-	    res = 0;
-	    return
+	 // Compute delta x square
+	 dx2 = dx^2;
+
+	 // Compute delta
+	 delta = dt / dx2;
+
+	 // Init I
+	 I = zeros(n, n);
+	 for i = 1:n
+	     for j = 1:n
+	     	 if (i == j)
+		    I(i, j) = 1;
+		 end
+	     end
 	 end
+
+	 // Init B
+	 B = zeros(n, n);
+	 for i = 1:n
+	     for j = 1:n
+	     	 if (i == j)
+		    B(i, j) = -2;
+		 end
+		 if (i == j - 1 || i == j + 1)
+		    B(i, j) = 1;
+		 end
+	     end
+	 end
+
+	 // Init U_m
+	 U_m = zeros(n);
+
+	 // Compute
+	 for i = 1:n
+	     for j = 1:n
+	     	 U_m(j) = U_m(j) + (I(i, j) + delta * B(i, j))^(n) * U_0(j);
+	     end
+	 end
+
+	 // Result
+	 res = U_m(n/2);
 	 
-	 // Compute result
-	 res = r * explicite(n, m1 - 1, j + 1, dt, dx, func) + (1 - 2 * r) * explicite(n, m1 - 1, j, dt, dx, func) + r * explicite(n, m1 - 1, j - 1, dt, dx, func);
 endfunction
