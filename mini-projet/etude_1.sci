@@ -42,9 +42,9 @@ num = zeros(10);
 
 for i = n
     j = i / 100;
-    ee(j) = abs(sol - euler_explicite(i));
-    ei(j) = abs(sol - euler_implicite(i));
-    num(j) = abs(sol - numerique(i));	
+    ee(j) = norm(sol - euler_explicite(i)) / norm(sol);
+    ei(j) = norm(sol - euler_implicite(i)) / norm(sol);
+    num(j) = norm(sol - numerique(i)) / norm(sol);	
 end
 
 xdata = [1/100, 1/200, 1/300, 1/400, 1/500, 1/600, 1/700, 1/800, 1/900, 1/1000];

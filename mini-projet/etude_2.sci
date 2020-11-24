@@ -55,8 +55,8 @@ function main()
 
 	for i = n
 	    j = i;
-	    ee(j) = abs(sol - euler_explicite(i));
-	    ei(j) = abs(sol - euler_implicite(i));
+	    ee(j) = norm(sol - euler_explicite(i)) / norm(sol);
+	    ei(j) = norm(sol - euler_implicite(i)) / norm(sol);
 	end
 
 	xdata = [1, 1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/8, 1/9, 1/10];
