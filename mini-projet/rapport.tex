@@ -315,6 +315,23 @@
   d'Euler sont de l'ordre de $k \Delta t$ alors l'erreur relative du
   schéma numérique est de l'ordre de $k \Delta t^2$.
 
+
+  Le programme \textbf{etude\_1.sci} permet de générer les graphes
+  suivants :
+
+  \includegraphics[scale = 0.6]{img/etude_1_ee.png}
+
+  \includegraphics[scale = 0.6]{img/etude_1_ei.png}
+
+  On peut voir que les erreurs relatives des schémas d'Euler suivent
+  un ordre linéaire donc $k \Delta t$.
+
+  \includegraphics[scale = 0.6]{img/etude_1_num.png}
+
+  On peut voir que l'erreur relative du schéma numérique suit un ordre
+  quadratique donc $k \Delta t^2$.
+
+  
   % Question 11
 \item
 
@@ -401,9 +418,24 @@
   Donc $ u_{m+1} = \frac{\sqrt{4 \Delta t u_m + 1} - 1}{2 \Delta t}$
   et $ u_m = \frac{\sqrt{4 \Delta t u_{m-1} + 1} - 1}{2 \Delta t}$
   
+  Le programme \textbf{etude\_2.sci} permet de générer les graphes
+  suivants :
+
+  \includegraphics[scale = 0.6]{img/etude_2_ee.png}
+
+  \includegraphics[scale = 0.6]{img/etude_2_ei.png}
+
+  J'ai sûrement dû faire une erreur car pour \textbf{euler explicite}
+  j'ai une droite constante horizontale, c'est-à-dire que toutes les
+  erreurs sont égales. Mais je l'ai fait avec des petites tailles car
+  sinon \textbf{scilab} crashais car la récursion faisait appelle a
+  trop de fonction.
 
   % Question 12
 \item
+  Cette question est lié à la précédente donc de ce que je vois, si
+  c'est bon, nous avons pas les mêmes conclusions que dans le cas
+  linéaire initiale.
   
 \end{enumerate}
 

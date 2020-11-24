@@ -2,62 +2,66 @@
 // Solution exacte
 function [res] = sol_exacte(x)
 
-res = exp(- x)
+res = exp(- x);
 
 endfunction
 
 // Calcul Euler Explicite
 function [res] = euler_explicite(n)
 
-res = (1 - (1 / n)) ** n
+res = (1 - (1 / n))^n;
 
 endfunction
 
 // Calcul Euler Implicite
 function [res] = euler_implicite(n)
 
-res = 1 / ((1 + (1 / n)) ** n)
+res = 1 / ((1 + (1 / n))^n);
 
 endfunction
 
 // Calcul numerique
 function [res] = numerique(n)
 
-res = ( (2 - (1 / n)) / (2 + (1 / n)) ) ** n
+res = ( (2 - (1 / n)) / (2 + (1 / n)) )^n;
 
 endfunction
 
 // Main function
 function main()
 
-// Display exact solution
-sol = sol_exacte(1)
-printf("Solution exacte à t = 1 : %lf\n", sol)
+// Compute exact solution
+sol = sol_exacte(1);
 
-n = 100
+// 
+n = [100:100:1000];
 
-// Compute scheme with n
-ee = euler_explicite(n)
-ei = euler_implicite(n)
-num = numerique(n)
+ee = zeros(10);
+ei = zeros(10);
+num = zeros(10);
 
-// Display result of scheme with n
-printf("\n")
-printf("Avec n = %d\n" , n)
-printf("euler explicite : %lf\n", ee)
-printf("euler implicite : %lf\n", ei)
-printf("numerique       : %lf\n", num)
+for i = n
+    j = i / 100;
+    ee(j) = abs(sol - euler_explicite(i));
+    ei(j) = abs(sol - euler_implicite(i));
+    num(j) = abs(sol - numerique(i));	
+end
 
-// Compute delta
-dee = abs(ee - sol)
-dei = abs(ei - sol)
-dnum = abs(num - sol)
+xdata = [1/100, 1/200, 1/300, 1/400, 1/500, 1/600, 1/700, 1/800, 1/900, 1/1000];
 
-// Display delta
-printf("\n")
-printf("Delta :\n")
-printf("delta euler explicite : %lf\n", dee)
-printf("delta euler implicite : %lf\n", dei)
-printf("delta numerique       : %lf\n", dnum)
+xtitle("Euler Explicite", "pas", "erreur");
+plot(xdata, ee);
+xs2png(0, "img/etude_1_ee.png");
+clf();
+
+xtitle("Euler Implicite", "pas", "erreur");
+plot(xdata, ei);
+xs2png(0, "img/etude_1_ei.png");
+clf();
+
+xtitle("Numerique", "pas", "erreur");
+plot(xdata, num);
+xs2png(0, "img/etude_1_num.png");
+clf();
 
 endfunction

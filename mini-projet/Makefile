@@ -4,7 +4,7 @@ OUT = rapport.pdf
 
 all: $(OUT) main half-clean
 
-$(OUT): rapport.tex
+$(OUT): rapport.tex img/*
 	pdflatex $< -o $@
 
 main: main.f90

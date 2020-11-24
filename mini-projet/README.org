@@ -1,0 +1,16 @@
+#+titile: README
+#+author: Nicolas BOUTON
+#+date:2020
+
+* Information
+
+  Ne surtout pas effectuer la commande suivante :
+
+  #+begin_src bash
+  $ make
+  #+end_src
+
+  Car elle regénère le *pdf* qui lui inclu les images qui sont dans
+  *img* et qui peuvent changer si vous tester mes programmes *scilab*.
+
+  Sinon le rapport ce trouve dans *rapport.pdf*.
