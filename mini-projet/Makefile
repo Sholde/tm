@@ -1,4 +1,5 @@
 OUT = rapport.pdf
+SRC = src
 
 .PHONY: all half-clean clean
 
@@ -7,7 +8,7 @@ all: $(OUT) main half-clean
 $(OUT): rapport.tex img/*
 	pdflatex $< -o $@
 
-main: main.f90
+main: $(SRC)/main.f90
 	gfortran $< -o $@
 
 half-clean:

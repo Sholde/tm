@@ -20,7 +20,8 @@ function [res] = euler_explicite(n)
 	delta_t = 1 / n;
 
 	// Recursion
-	res = euler_explicite(n-1) * (1 - delta_t * euler_explicite(n-1));
+	ee = euler_explicite(n-1);
+	res = ee * (1 - delta_t * ee);
 
 endfunction
 
@@ -62,12 +63,12 @@ function main()
 	xdata = [1, 1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/8, 1/9, 1/10];
 
 	xtitle("Euler Explicite", "pas", "erreur");
-	plot(xdata, ee);
+	plot(xdata, log(ee));
 	xs2png(0, "img/etude_2_ee.png");
 	clf();
 
 	xtitle("Euler Implicite", "pas", "erreur");
-	plot(xdata, ei);
+	plot(xdata, log(ei));
 	xs2png(0, "img/etude_2_ei.png");
 	clf();
 
